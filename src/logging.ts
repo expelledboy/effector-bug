@@ -1,25 +1,8 @@
 import { $isSubscribed, $session, $userId, setUserId, subscribeSessionFx, updateSession } from "./model";
 
-updateSession.watch((session) => {
-    console.log("updateSession", session);
-});
-
-$session.watch((session) => {
-    console.log("$session", session);
-});
-
-setUserId.watch((userId) => {
-    console.log("setUserId", userId);
-});
-
-$userId.watch((userId) => {
-    console.log("$userId", userId);
-});
-
-subscribeSessionFx.finally.watch((result) => {
-    console.log("subscribeSessionFx.finally", result);
-});
-
-$isSubscribed.watch((isSubscribed) => {
-    console.log("$isSubscribed", isSubscribed);
-});
+updateSession.watch(console.log.bind(console, "updateSession"));
+$session.watch(console.log.bind(console, "$session"));
+setUserId.watch(console.log.bind(console, "setUserId"));
+$userId.watch(console.log.bind(console, "$userId"));
+subscribeSessionFx.finally.watch(console.log.bind(console, "subscribeSessionFx.finally"));
+$isSubscribed.watch(console.log.bind(console, "$isSubscribed"));
