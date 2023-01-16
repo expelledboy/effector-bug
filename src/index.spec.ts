@@ -1,5 +1,9 @@
-import { allSettled, fork } from "effector"
-import { $isSubscribed, setUserId, domain, Service } from "./index";
+import { fork } from "effector"
+import { domain, $isSubscribed, setUserId, $session } from "./model";
+import { Service } from "./service";
+
+import "./init"
+import "./logging"
 
 const scope = fork(domain)
 
@@ -11,5 +15,13 @@ describe("session subscription", () => {
   it("should subscribe to session after getting a user id", async () => {
     setUserId("user-id")
     expect(scope.getState($isSubscribed)).toBe(true)
+    expect(scope.getState($session)).toBe(null)
+  })
+
+  it("session should be updated on create", async () => {
+    const { Session } = Service.Firestore()
+    Session.create({ userId: "user-id" })
+    expect(scope.getState($session)).not.toBe(null)
+    expect(scope.getState($session)).toMatchObject({ userId: "user-id" })
   })
 });
