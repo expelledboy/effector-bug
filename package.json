@@ -5,7 +5,8 @@
   "scripts": {
     "build": "babel src --out-dir dist --extensions '.ts'",
     "type-check": "tsc --sourceMap --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "clean": "git clean -fdx"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
