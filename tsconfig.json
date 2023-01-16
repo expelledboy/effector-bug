@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+		"useDefineForClassFields": true,
+    "outDir": "./dist",
+    "types": ["node", "jest"],
+    "target": "es2017",
+    "jsx": "react-jsx",
+    "moduleResolution": "node"
+  },
+	"include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
