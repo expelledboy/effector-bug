@@ -1,5 +1,5 @@
 import { restore, sample } from "effector";
-import { $userId, subscribeSessionFx, updateSession } from "./model";
+import { $session, $userId, subscribeSessionFx, updateSession } from "./model";
 import { Service } from "./service";
 
 subscribeSessionFx.use(async ({ userId, unsubscribe }) => {
@@ -20,3 +20,5 @@ sample({
   fn: (unsubscribe, userId) => ({ unsubscribe, userId }),
   target: subscribeSessionFx,
 });
+
+$session.on(updateSession, (_, session) => session);
